@@ -498,3 +498,9 @@ h3 {
     font-size: 1.5rem;
   }
 }
+
+#map
+{
+  height: 180px;
+  width: 200px;
+}
