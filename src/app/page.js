@@ -18,13 +18,13 @@ export default function Home() {
         {/* Navbar content */}
       {/* </Navbar> */}
       
-      {/* <Home_page_2 /> */}
+      <Home_page_2 />
       {/* <Analysis/> */}
       {/* <Home_page_3/> */}
       {/* <Footer/> */}
       {/* <Contact_us/> */}
       {/* <Find_parking/> */}
-      <Add_parking_spot/>
+      {/* <Add_parking_spot/> */}
    </div>
    </>
   );
