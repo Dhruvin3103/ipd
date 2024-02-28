@@ -44,6 +44,33 @@ export default function Component() {
                 </div>
               </div>
             </CardContent>
+            <CardHeader className="pb-0">
+              <CardTitle className="text-2xl"></CardTitle>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <div>
+                  <div className="flex items-center space-x-4">
+                    <MapIcon className="h-6 w-6" />
+                    <div className="space-y-1.5">
+                      <p className="text-sm font-medium leading-none text-gray-500 dark:text-gray-400">
+                        Previous Location
+                      </p>
+                      <p className="text-base font-medium leading-none">37.7749° N, 122.4194° W</p>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex items-center space-x-4">
+                    {/* <ClockIcon className="h-6 w-6" /> */}
+                    <div className="space-y-1.5">
+                      {/* <p className="text-sm font-medium leading-none text-gray-500 dark:text-gray-400">Last Updated</p> */}
+                      {/* <p className="text-base font-medium leading-none">2 minutes ago</p> */}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
           </Card>
           <Card className="lg:col-span-2">
             <CardHeader>

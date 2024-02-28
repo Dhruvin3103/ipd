@@ -9,7 +9,7 @@ import user_logo from "@/images/user_logo.png"
 const navigation = [
 //   { name: 'About', href: '#', current: true },
   { name: 'The Parking Guardian', href: '#', current:true},
-  { name: 'Current Location', href: '#', current: false },
+  { name: 'Anti-theft', href: 'Antitheft', current: false },
   { name: 'Nearest Parking Zone', href: 'Find_Parking', current: false },
   { name: 'Analyze', href: 'Analysis', current: false },
   { name: 'Add a Parking Zone', href: 'Add_Parking', current: false },

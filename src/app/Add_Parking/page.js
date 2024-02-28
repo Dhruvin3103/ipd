@@ -1,10 +1,10 @@
-"use client"
-import React, { useState, useEffect } from 'react';
+"use client";
+import React, { useState, useRef,useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
 import axios from 'axios';
 import L from 'leaflet'; // Import Leaflet library
 import 'leaflet/dist/leaflet.css';
-import Navbar_2 from "@/timepass/Navbar_2"
+import Navbar_2 from "@/timepass/Navbar_2";
 import Footer from '@/timepass/Footer';
 
 const AddLocationPage = () => {
@@ -13,10 +13,7 @@ const AddLocationPage = () => {
     category: '',
     coordinates: { lat: 0, lng: 0 }, // Initialize with default values
   });
-
-  useEffect(() => {
-    getLocation(); // Call getLocation function when component mounts
-  }, []);
+  const mapRef = useRef();
 
   const handleMapClick = (e) => {
     setFormData((prevData) => ({
@@ -33,6 +30,7 @@ const AddLocationPage = () => {
         coordinates: [formData.coordinates.lat, formData.coordinates.lng],
         user: 1,
       });
+      console.log(formData.coordinates.lat, formData.coordinates.lng);
 
       if (response.status === 200) {
         console.log('Location added successfully');
@@ -60,21 +58,32 @@ const AddLocationPage = () => {
 
   function getLocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
+      navigator.geolocation.getCurrentPosition(
+        (position) => showPosition(position),
+        (error) => console.error("Error getting location:", error)
+      );
     } else {
       console.error("Geolocation is not supported by this browser.");
     }
   }
 
+  useEffect(() => {
+    getLocation();
+  }, []);
+
   function showPosition(position) {
     const { latitude, longitude } = position.coords;
-    setFormData(prevData => ({
+    setFormData((prevData) => ({
       ...prevData,
       coordinates: {
         lat: latitude,
         lng: longitude
       }
     }));
+    const map = mapRef.current;
+    if (map) {
+      map.setView([latitude, longitude], 18);
+    }
   }
 
   return (
@@ -83,7 +92,7 @@ const AddLocationPage = () => {
       <div className="container">
         <h4>Add New Parking Location</h4>
         <div className="map-container">
-          <MapContainer center={[formData.coordinates.lat, formData.coordinates.lng]} zoom={20} scrollWheelZoom={true} style={{ height: '600px', width: '70%', float: 'left' }}>
+          <MapContainer ref={mapRef} center={[formData.coordinates.lat, formData.coordinates.lng]} zoom={18} scrollWheelZoom={true} style={{ height: '600px', width: '70%', float: 'left' }}>
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
             {formData.coordinates && (
               <Marker position={formData.coordinates} icon={userLocationIcon2}>
@@ -133,7 +142,7 @@ const AddLocationPage = () => {
         <style jsx>{`
           h4{
             font-weight: bold; /* Make text bold */
-      font-size: 36px; /* Increase font size */
+            font-size: 36px; /* Increase font size */
           }
           .container {
             max-width: 1500px;
