@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import Navbar_2 from "./Navbar_2"
 import Image from "next/image"
-import home_page_pic_2 from "@/app/images/home_page_pic_2.png"
+import home_page_pic_2 from "@/images/home_page_pic_2.png"
 import Footer from "./Footer"
 
 export default function Component() {

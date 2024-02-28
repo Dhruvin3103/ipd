@@ -2,17 +2,17 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import tpg_logo from "@/app/images/tpg_logo.png"
+import tpg_logo from "@/images/tpg_logo.png"
 import Image from 'next/image'
-import user_logo from "@/app/images/user_logo.png"
+import user_logo from "@/images/user_logo.png"
 
 const navigation = [
 //   { name: 'About', href: '#', current: true },
   { name: 'The Parking Guardian', href: '#', current:true},
   { name: 'Current Location', href: '#', current: false },
-  { name: 'Nearest Parking Zone', href: '#', current: false },
-  { name: 'Analyze', href: '#', current: false },
-  { name: 'Add a Parking Zone', href: '#', current: false },
+  { name: 'Nearest Parking Zone', href: 'Find_Parking', current: false },
+  { name: 'Analyze', href: 'Analysis', current: false },
+  { name: 'Add a Parking Zone', href: 'Add_Parking', current: false },
  ]
 
 function classNames(...classes) {

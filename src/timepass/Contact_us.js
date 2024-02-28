@@ -9,10 +9,21 @@ import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
-import Navbar from "./Navbar"
+// import Navbar from "./Navbar"
+import { useRouter } from 'next/navigation';
+
 
 export default function Component() {
+
+
+  const router=useRouter()
+
+  const Ayush =()=>{
+    router.push("home_page_1")
+  }
   return (
+
+    
     <>
     {/* <Navbar/> */}
     <Card>
@@ -46,7 +57,7 @@ export default function Component() {
         </div>
       </CardContent>
       <CardFooter>
-      <Button className="ml-auto bg-blue-500 hover:bg-red-500 text-white font-bold py-4 px-8 rounded">Submit</Button>
+      <Button className="ml-auto bg-blue-500 hover:bg-red-500 text-white font-bold py-4 px-8 rounded"onClick={Ayush}>Submit</Button>
 
       </CardFooter>
     </Card>

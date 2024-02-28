@@ -4,9 +4,23 @@ import './style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faInstagram,faTwitter,faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
+// import { Router } from 'lucide-react';
+
+
 
 const Footer = () => {
+
+  
+
+  const router=useRouter()
+
+  const Ayush =()=>{
+    router.push("Contact_us")
+  }
+
   return (
+
     <div>
       <footer className="footer">
         <div className="container">
@@ -73,7 +87,14 @@ const Footer = () => {
               </div>
             </div>
             <div className="footer-col">
-              <div className='button'> Contact us</div>
+            <button>
+            <div className="min-w-max w-full py-7 px-8 bg-blue-500 hover:bg-blue-600 text-white font-bold text-lg rounded cursor-pointer flex items-center justify-center" onClick={Ayush}>
+  Contact us
+</div>
+
+
+
+</button>
               {/* <ul>
                 <li><a href="#">FAQ</a></li>
                 <li><a href="#">shipping</a></li>

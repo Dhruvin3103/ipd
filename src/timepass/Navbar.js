@@ -2,7 +2,7 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import tpg_logo from "@/app/images/tpg_logo.png"
+import tpg_logo from "@/images/tpg_logo.png"
 import Image from 'next/image'
 
 const navigation = [

@@ -57,6 +57,7 @@ const AddLocationPage = () => {
 
   return (
     <div className="container">
+      <h4>Add New Parking Location</h4>
       <div className="map-container">
         <MapContainer center={[19.182381002086892,72.85872142939337]} zoom={20} scrollWheelZoom={true} style={{ height: '600px', width: '70%', float: 'left' }}>
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
@@ -106,8 +107,13 @@ const AddLocationPage = () => {
         </div>
       </div>
       <style jsx>{`
+
+        h4{
+          font-weight: bold; /* Make text bold */
+    font-size: 36px; /* Increase font size */
+        }
         .container {
-          max-width: 1200px;
+          max-width: 1500px;
           margin: auto;
           padding: 20px;
         }
@@ -115,6 +121,7 @@ const AddLocationPage = () => {
         .map-container {
           width: 70%;
           float: left;
+          margin-bottom: 20px;
         }
 
         .form-container {
@@ -136,15 +143,22 @@ const AddLocationPage = () => {
           padding: 10px;
           margin-bottom: 10px;
         }
+        .submit-button {
+          display: flex;
+          justify-content: center; /* Center horizontally */
+          align-items: center; /* Center vertically */
+          height: 100%; /* Set height to ensure vertical centering */
+        }
 
         .submit-button button {
-          padding: 15px 20px; /* Increased padding for better readability */
+          padding: 25px 20px; /* Increased padding for better readability */
           background-color: #007bff;
           color: #fff;
           border: none;
           border-radius: 5px;
           cursor: pointer;
           width: 100%; /* Make the button full width */
+          text-align: center; /* Center the text */
         }
 
         .submit-button button:hover {

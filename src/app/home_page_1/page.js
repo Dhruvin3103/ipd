@@ -1,3 +1,4 @@
+"use client"
 /**
  * v0 by Vercel.
  * @see https://v0.dev/t/YtmNgUxDNYn
@@ -7,13 +8,23 @@ import { CardTitle, CardDescription, CardHeader, CardContent, Card } from "@/com
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import pic_1 from '@/app/images/home_page_pic_1.png'
+import pic_1 from '@/images/home_page_pic_1.png'
 import Image from "next/image"
-import Navbar from "./Navbar"
-import Footer from "./Footer"
+import Navbar from "@/timepass/Navbar"
+import Footer from "@/timepass/Footer"
+import { useRouter } from 'next/navigation';
+
 
 
 export default function Component() {
+
+  // const DynamicComponent = dynamic(() => import(''), { ssr: false });
+
+  const router=useRouter()
+
+  const Ayush =()=>{
+    router.push("home_page_2")
+  }
   return (
     <>
     <Navbar style={{ backgroundColor: "blue", padding: "10px" }}></Navbar>
@@ -147,7 +158,10 @@ export default function Component() {
               <div className="space-y-4">
                 <Input placeholder="Username/Email" type="email" />
                 <Input placeholder="Password" type="password" />
-                <Button className="w-full">Sign In</Button>
+                <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={Ayush}>
+                   Sign In
+                            </button>
+
               </div>
             </CardContent>
           </Card>
