@@ -140,6 +140,11 @@ const AddLocationPage = () => {
           </div>
         </div>
         <style jsx>{`
+          //  body {
+          //   background-color: black; /* Set background color to black */
+          //   color: white; /* Set text color to white */
+          // }
+          
           h4{
             font-weight: bold; /* Make text bold */
             font-size: 36px; /* Increase font size */

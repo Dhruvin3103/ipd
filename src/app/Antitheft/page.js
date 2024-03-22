@@ -6,6 +6,7 @@
 import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card"
 import Navbar_2 from "@/timepass/Navbar_2"
 import Footer from "@/timepass/Footer"
+import Map from "@/timepass/Map"
 
 
 export default function Component() {
@@ -78,7 +79,8 @@ export default function Component() {
             </CardHeader>
             <CardContent>
               <div className="w-full aspect-[2/1] overflow-hidden rounded-lg">
-                <img alt="Map" className="aspect-[2/1] object-cover" height={400} src="/placeholder.svg" width={800} />
+                {/* <img alt="Map" className="aspect-[2/1] object-cover" height={400} src="/placeholder.svg" width={800} /> */}
+                <Map/>
               </div>
             </CardContent>
           </Card>

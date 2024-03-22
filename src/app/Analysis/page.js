@@ -12,6 +12,7 @@ import { AlertTitle, AlertDescription, Alert } from "@/components/ui/alert"
 import Navbar_2 from "@/timepass/Navbar_2"
 import Footer from "@/timepass/Footer"
 import { useRouter } from 'next/navigation';
+import Map from "@/timepass/Map"
 
 
 export default function Component() {
@@ -34,7 +35,12 @@ export default function Component() {
       </header>
       <main className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="w-full h-[400px] rounded-md overflow-hidden">
-          <img
+          <div className="height:400 width:500 "  style={{
+              aspectRatio: "500/400",
+              objectFit: "cover",
+            }}>
+         <Map/>
+          {/* <img
             alt="Map showing vehicle location"
             className="w-full h-full object-cover"
             height="400"
@@ -44,7 +50,8 @@ export default function Component() {
               objectFit: "cover",
             }}
             width="500"
-          />
+          /> */}
+          </div>
         </div>
         <Card>
           <CardHeader>

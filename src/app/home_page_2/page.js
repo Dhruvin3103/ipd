@@ -10,11 +10,16 @@ import Navbar_2 from "@/timepass/Navbar_2"
 import Image from "next/image"
 import home_page_pic_2 from "@/images/home_page_pic_2.png"
 import Footer from "@/timepass/Footer"
+import Map from "@/timepass/Map"
 
 export default function Component() {
   return (
     <>
     <Navbar_2/>
+    <div className="space" style={{ padding: '20px' }}>
+  {/* Your content here */}
+</div>
+
       {/* <div className="relative grid gap-6">
         <div className="absolute inset-0 w-full h-full bg-gray-900/10 rounded-lg backdrop-blur dark:bg-gray-50/10" />
         <header className="container grid gap-4 px-4 md:px-6">
@@ -93,8 +98,8 @@ export default function Component() {
           </div>
         </div>
       </section> */}
-     <section className="pt-12">
-  <div className="container px-4 md:px-6">
+     <section className="">
+  <div className="px-4 md:px-6">
     <div className="grid items-center gap-6 lg:grid-cols-[1fr_600px] lg:gap-12 xl:grid-cols-[1fr_800px]">
       <div className="flex flex-col justify-center space-y-4">
         <div className="space-y-2">
@@ -167,15 +172,16 @@ export default function Component() {
         </div>
       </section> */}
       <section className="w-full py-12 lg:py-24">
-        <div className="container px-4 md:px-6">
-          <div className="grid items-center gap-6 lg:grid-cols-[1fr_600px] lg:gap-12 xl:grid-cols-[1fr_800px]">
-            <img
+        <div className=" mx-auto px-4 md:px-2">
+          <div className="grid items-center gap-6 lg:grid-cols-[1fr_800px] lg:gap-12 xl:grid-cols-[1fr_800px]">
+            <Map/>
+            {/* <img
               alt="Image"
               className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center lg:aspect-square"
               height="400"
               src="/placeholder.svg"
               width="600"
-            />
+            /> */}
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Fetching Real-Time Location 🗺️✅</h2>

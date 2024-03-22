@@ -11,8 +11,11 @@ import { Select } from "@/components/ui/select"
 import { Card } from "@/components/ui/card"
 import Navbar_2 from "@/timepass/Navbar_2"
 import Footer from "@/timepass/Footer"
+import Map2 from "@/timepass/Map2"
 
 export default function Component() {
+
+  
   return (
     <>
     
@@ -94,21 +97,56 @@ export default function Component() {
             View Route
           </Link>
         </div>
+        <div className="bg-white p-4 rounded-lg shadow-md dark:bg-gray-900">
+          <div className="space-y-2">
+            <div className="inline-block rounded-lg bg-gray-100 px-2 py-1 text-xs md:text-sm dark:bg-gray-800">
+              Mountain Adventures
+            </div>
+            <p className="text-gray-500 text-sm md:text-base dark:text-gray-400">
+              Majestic peaks, fresh mountain air, and thrilling trails. Embark on an unforgettable journey through the mountains.
+            </p>
+          </div>
+          <Link
+            className="block mt-2 text-center bg-blue-500 hover:bg-red-500 text-white font-bold py-2 px-3 rounded transition-colors duration-300 text-xs md:text-sm"
+            href="#"
+          >
+            View Route
+          </Link>
+        </div>
+        <div className="bg-white p-4 rounded-lg shadow-md dark:bg-gray-900">
+          <div className="space-y-2">
+            <div className="inline-block rounded-lg bg-gray-100 px-2 py-1 text-xs md:text-sm dark:bg-gray-800">
+              Mountain Adventures
+            </div>
+            <p className="text-gray-500 text-sm md:text-base dark:text-gray-400">
+              Majestic peaks, fresh mountain air, and thrilling trails. Embark on an unforgettable journey through the mountains.
+            </p>
+          </div>
+          <Link
+            className="block mt-2 text-center bg-blue-500 hover:bg-red-500 text-white font-bold py-2 px-3 rounded transition-colors duration-300 text-xs md:text-sm"
+            href="#"
+          >
+            View Route
+          </Link>
+        </div>
       </div>
       
       {/* Right Section for Image */}
-      <div className="flex justify-center items-center md:w-70%">
-        <div className="w-full h-auto">
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200"></h2>
-          <img
-            alt="Beach Getaways"
-            className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center w-full md:h-full lg:w-full"
-            height="400"
-            src="/placeholder.svg"
-            width="600"
-          />
+      <div className="flex justify-center items-center w-full h-full">
+  <div className="container mx-auto">
+    <div className="h-screen flex justify-center items-center">
+      <div className="w-full h-full" style={{ height: '1000px', width: '100% !important', position: 'relative', top: '0px', zIndex: '9999', outlineStyle: 'none' }}>
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200"></h2>
+        <div className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center w-full md:h-full lg:w-full">
+          <div>
+            <Map2/>
+          </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
     </div>
   </div>
 </section>
@@ -161,3 +199,21 @@ function SearchIcon(props) {
     </svg>
   )
 }
+
+
+
+// 'use client'
+// import dynamic from 'next/dynamic'
+ 
+
+// const DynamicMap = dynamic(() => import('@/timepass/Map'), {
+//   ssr: false
+// });
+
+// export default function Home() {
+//   return (
+//     <main>
+//      <DynamicMap />
+//     </main>
+//   )
+// }
