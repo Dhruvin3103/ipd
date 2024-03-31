@@ -187,8 +187,6 @@ const Home_page = () => {
       </div>
     
     </div> 
-
-
     
     < div className="blog-section">
     
