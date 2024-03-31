@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alert Message</title>
+    <!-- Include Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+      /* Style the map container */
+      #map {
+        height: 300px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Hello {{ username }},</p>
+    <p>Your Vehicle {{ vehicle }} has been moved from its location.</p>
+    <p>It is out of the radius and sensed it.</p>
+    <p>Last seen: {{ time }}</p>
+    <p>at location : {{ location }}</p>
+    <!-- Map container -->
+    <div id="map"></div>
+
+    <!-- Include Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+      // Initialize and add the map
+      function initMap() {
+        // Parse the location coordinates
+        var locationStr = "{{ location }}";
+        var locationCoords = locationStr.split(",").map(function (coord) {
+          return parseFloat(coord);
+        });
+
+        // The location of the marker
+        var location = [locationCoords[0], locationCoords[1]];
+
+        // Create the map
+        var map = L.map("map").setView(location, 15);
+
+        // Add tile layer (OpenStreetMap)
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution:
+            '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map);
+
+        // Add marker
+        L.marker(location).addTo(map);
+      }
+      
+      // Call initMap function after Leaflet script is loaded
+      initMap();
+    </script>
+    <p>hu</p>
+  </body>
+</html>
