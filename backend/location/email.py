@@ -6,13 +6,13 @@ from datetime import datetime
 from decouple import config
 
 
-def alert_mail(username, vehicle, location):
-    subject = "Alert regarding your vehicle"
+def alert_mail(username, vehicle, x,y,message):
+    subject = 'Alerts'
     from_email = config("EMAIL_HOST_USER")
     recipient_list = ["scarlettwitch031@gmail.com"]
     html_content = render_to_string(
         "email_template.html",
-        {"username": username, "vehicle": vehicle, "location": location, "time": str(datetime.now())},
+        {"username": username, "vehicle": vehicle, "location": [x,y], "time": str(datetime.now()), 'mess':message},
     )
     # print(html_content)
     text_content = strip_tags(html_content)
@@ -22,5 +22,6 @@ def alert_mail(username, vehicle, location):
 
 
 
-location = "19.235,72.8598"
-alert_mail('test_user', 'test_vehicle', location)
+location = "19.235"
+loc_y = "72.8598"
+alert_mail('test_user', 'test_vehicle', location,loc_y,"your vehicle is halted at a no parking Zone")

@@ -58,16 +58,20 @@ class NearestLocationView(APIView):
     def post(self, request):
         try:
             spot = request.data["spot"]
+            print(spot)
             # code get data from senors
             user = User.objects.get(id=1)
             user_vehicle_coordinates = user.get_vehicle_location()
             user_location = geocoder.ip("me").latlng
-
+            print(user_location)
             user_coordinates_gps = Point(user_location[1], user_location[0], srid=4326)
+            # user_coordinates_gps = Point(
+            #     float(72.8374532), float(19.107002100000003), srid=4326
+            # )
             nearest_locations = (
                 Location2.objects.filter(category=spot)
                 .annotate(
-                    distance=functions.Distance("coordinates", user_vehicle_coordinates)
+                    distance=functions.Distance("coordinates", user_coordinates_gps)
                 )
                 .order_by("distance")[:20]
             )
@@ -144,13 +148,15 @@ class CheckParkingZoneView(APIView):
             print(lat, lng, "fetched ")
             user_coordinates = Point(lng, lat, srid=4326)
             max_distance_meters = 8
+            print(user_vehicle_coordinates.x,user_vehicle_coordinates.y,'user vehicle loc ')
             # Check if the user's location is within the no parking zone
-            print(user_coordinates, "lessgo")
+            print(user_coordinates, "user co ord")
             if is_dist_btw_points_greater(
-                user_vehicle_coordinates, user_coordinates, 15
+                user_vehicle_coordinates, user_coordinates, 300
             ):
+                alert_mail('test_user','test_vehicle',user_vehicle_coordinates.x,user_vehicle_coordinates.y,'your vehicle has been moved from its location ')
                 return Response(
-                    {"status": "antitheft alert"}, status=status.HTTP_400_BAD_REQUEST
+                    {"status": "antitheft alert",'user_coord':{'lat':user_coordinates.y,'lon':user_coordinates.x},'vehicle_coord':{'lat':user_vehicle_coordinates.y,'lon':user_vehicle_coordinates.x}}, status=status.HTTP_400_BAD_REQUEST
                 )
             near_bus_stop = Location2.objects.filter(
                 category="bus_stop",
@@ -168,15 +174,16 @@ class CheckParkingZoneView(APIView):
             ).exists()
             print(near_bus_stop, in_parking_zone)
             if near_bus_stop:
+                alert_mail('test_user','test_vehicle',user_vehicle_coordinates.x,user_vehicle_coordinates.y,'yout vehicle is halted at a no parking zone')
                 return Response(
-                    {"status": "In no parking zone"}, status=status.HTTP_200_OK
+                    {"status": "In no parking zone",'user_coord':{'lat':user_coordinates.y,'lon':user_coordinates.x},'vehicle_coord':{'lat':user_vehicle_coordinates.y,'lon':user_vehicle_coordinates.x}}, status=status.HTTP_200_OK
                 )
             elif in_parking_zone:
                 return Response(
-                    {"status": "parking area nearby"}, status=status.HTTP_200_OK
+                    {"status": "parking area nearby",'user_coord':{'lat':user_coordinates.y,'lon':user_coordinates.x},'vehicle_coord':{'lat':user_vehicle_coordinates.y,'lon':user_vehicle_coordinates.x}}, status=status.HTTP_200_OK
                 )
             else:
-                return Response({"status": "in normal zone"}, status=status.HTTP_200_OK)
+                return Response({"status": "in normal zone",'user_coord':{'lat':user_coordinates.y,'lon':user_coordinates.x},'vehicle_coord':{'lat':user_vehicle_coordinates.y,'lon':user_vehicle_coordinates.x}}, status=status.HTTP_200_OK)
         except Exception as e:
             print(e)
             return Response(
